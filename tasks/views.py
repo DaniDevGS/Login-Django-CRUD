@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .forms import TaskForm
+from .models import Task
 
 # Create your views here.
 def home(request):
@@ -34,7 +36,28 @@ def signup(request):
                 })
     
 def tasks(request):
-    return render(request, 'tasks.html')
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
+    
+    return render(request, 'tasks.html', {'tasks': tasks})
+
+def create_task(request):
+    if request.method == 'GET':
+        return render(request, 'create_task.html', {
+            'form': TaskForm
+        })
+    else:
+        try:
+            form = TaskForm(request.POST)
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            return redirect('tasks')
+        
+        except ValueError:
+            return render(request, 'create_task.html', {
+                'form': TaskForm,
+                'error': 'Porfavor provide valida data'
+            })
 
 def signout(request):
     logout(request)
