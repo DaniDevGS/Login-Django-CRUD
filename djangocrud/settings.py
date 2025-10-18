@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -37,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks'
+    'django.contrib.sites',
+    'tasks',
+
+    'allauth',               # <-- DEBE ESTAR
+    'allauth.account',       # <-- DEBE ESTAR
+    'allauth.socialaccount', # <-- Opcional, pero muy común si usas login de Google/Facebook
 ]
 
 MIDDLEWARE = [
@@ -47,6 +53,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware',
+    
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
