@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from .forms import TaskForm
 from .models import Task
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -63,6 +64,7 @@ def signup(request):
                     'error': "Password do not match"
                 })
 
+@login_required
 def tasks(request):
     """Muestra la lista de tareas pendientes del usuario autenticado.
 
@@ -77,6 +79,22 @@ def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {'tasks': tasks})
 
+@login_required
+def tasks_completed(request):
+    """Muestra la lista de tareas pendientes del usuario autenticado.
+
+    Filtra y recupera las tareas del usuario actual que aún no se han completado.
+
+    Args:
+        request: El objeto HttpRequest entrante. Debe haber un usuario autenticado.
+
+    Returns:
+        Un objeto HttpResponse que renderiza 'tasks.html' con la lista de tareas.
+    """
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'tasks.html', {'tasks': tasks})
+
+@login_required
 def create_task(request):
     """Gestiona la creación de una nueva tarea.
 
@@ -112,6 +130,7 @@ def create_task(request):
                 'error': 'Porfavor provide valida data'
             })
 
+@login_required
 def task_detail(request, task_id:int):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -126,6 +145,7 @@ def task_detail(request, task_id:int):
         except ValueError:
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': "Error updating task"})
 
+@login_required
 def complete_task(request, task_id:int):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
@@ -133,6 +153,14 @@ def complete_task(request, task_id:int):
         task.save()
         return redirect('tasks')
 
+@login_required
+def delete_task(request, task_id:int):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('tasks')
+
+@login_required
 def signout(request):
     """Cierra la sesión del usuario actual y redirige a la página de inicio.
 
@@ -178,3 +206,4 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
+        
