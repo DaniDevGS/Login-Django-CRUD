@@ -1,6 +1,213 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facilis tenetur labore unde ipsa explicabo nemo repudiandae similique alias, mollitia, recusandae quaerat incidunt sit aspernatur doloribus eum debitis excepturi molestiae.</p>
+    <main class="container py-5">
+        <section class="card card-body">
+            <h1 class="display-1 text-center">Django App</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facilis tenetur labore unde ipsa explicabo nemo repudiandae similique alias, mollitia, recusandae quaerat incidunt sit aspernatur doloribus eum debitis excepturi molestiae.</p>
+
+            <div class="text-center">
+                <a class="btn btn-primary" href="/signin/">
+                    Signin
+                </a>
+
+                <a class="btn btn-info" href="/signup/">
+                    Signup
+                </a>
+            </div>
+        </section>
+    </main>
+
+<!-- HTML PARA PODRUCCION -->
+<main class="container-fluid py-5">
+    <section class="card card-body">
+        <div class="text-center">
+            <h1 class="text-center">Trivens Smart Shop</h1>
+            <p>TU MEJOR IMPORTACION</p>
+        </div>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-danger rounded-5">Ver Tienda</button>
+        </div>
+    </section>
+
+    <section class="card card-body">
+        <div class="container text-center">
+            <h2>¿Porque nosotros?</h2>
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <a href="" class="d-inline-block mb-5"><i class="fa-solid fa-bolt fa-5x text-danger"></i></a>
+                    <p class="fw-bold text-danger fs-4">Compra Rapida</p>
+                </div>
+                    
+                <div class="col">
+                    <a href="" class="d-inline-block mb-5"><i class="fa-solid fa-shield fa-5x text-danger"></i></a>
+                    <p class="fw-bold text-danger fs-4">Pago Seguro</p>
+                </div>
+
+                <div class="col">
+                    <a href="" class="d-inline-block mb-5"><i class="fa-solid fa-truck-fast fa-5x text-danger"></i></a>
+                    <p class="fw-bold text-danger fs-4">Envio gratis</p>
+                </div>
+
+                <div class="col">
+                    <a href="" class="d-inline-block mb-5"><i class="fa-solid fa-credit-card fa-5x text-danger"></i></a>
+                    <p class="fw-bold text-danger fs-4">Multiples metodos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="card card-body">
+        <div class="container text-center">
+            <h2>Productos Destacados</h2>
+
+            <div class="row align-items-center">
+                <article class="">
+                    <div class="">
+                        <img src="./static/img/Goku-SSJ_Funko.webp">
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <h3 class="">Goku SSj Funko</h3>
+                        </div>
+                        <div class="">
+                            <p class="">Es un producto que compraras si eres un verdadero fan de Dragon Ball</p>
+                        </div>
+                        <div class="">
+                            <span class="">10$</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="">
+                    <div class="">
+                        <img src="">
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <h3 class="">iPhone 14 Pro Max</h3>
+                        </div>
+                        <div class="">
+                            <p class="">Es un producto para tremendos sifrinos.</p>
+                        </div>
+                        <div class="">
+                            <span class="">10$</span>
+                        </div>
+                    </div>
+                </article>
+                    
+                <article class="">
+                    <div class="">
+                        <img src="./static/img/Macbook.jpg">
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <h3 class="">Macbook</h3>
+                        </div>
+                        <div class="">
+                            <p class="">Un producto que adquiriras si eres tremendo homosexual ¿Porque comprarias esto?</p>
+                        </div>
+                        <div class="">
+                            <span class="">10$</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="card card-body">
+    <div class="container text-center">
+        <h2>Productos Destacados</h2>
+
+        <div class="row align-items-center">
+            <article class="col-md-4">
+                <div class="">
+                    <img src="./static/img/Goku-SSJ_Funko.webp" width="100">
+                </div>
+                <div class="">
+                    <div class="">
+                        <h3 class="">Goku SSj Funko</h3>
+                    </div>
+                    <div class="">
+                        <p class="">Es un producto que compraras si eres un verdadero fan de Dragon Ball</p>
+                    </div>
+                    <button class="">
+                        <span class="">10$</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="col-md-4">
+                <div class="">
+                    <img src="./static/img/Iphone.jpg" width="100">
+                </div>
+                <div class="">
+                    <div class="">
+                        <h3 class="">iPhone 14 Pro Max</h3>
+                    </div>
+                    <div class="">
+                        <p class="">Es un producto para tremendos sifrinos.</p>
+                    </div>
+                    <button class="">
+                        <span class="">10$</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="col-md-4">
+                <div class="">
+                    <img src="./static/img/Macbook.jpg" width="100">
+                </div>
+                <div class="">
+                    <div class="">
+                        <h3 class="">Macbook</h3>
+                    </div>
+                    <div class="">
+                        <p class="">Un producto que adquiriras si eres tremendo homosexual ¿Porque comprarias esto?</p>
+                    </div>
+                    <button class="">
+                        <span class="">10$</span>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+    <section class="">
+        <div class="">
+            <article class="">
+                <div class="">
+                    <h3>Salud y Belleza</h3>
+                </div>
+                <button>Ver mas</button>
+            </article>
+        </div>
+    </section>
+
+    <section class="">
+        <div class="">
+            <article class="">
+                <div class="">
+                    <h3>Higiene</h3>
+                </div>
+                <button>Ver mas</button>
+            </article>
+        </div>
+    </section>
+
+    <section class="">
+        <div class="">
+            <article class="">
+                <div class="">
+                    <h3>Comestibles</h3>
+                </div>
+                <button>Ver mas</button>
+            </article>
+        </div>
+    </section>
+</main>
 {% endblock %}
